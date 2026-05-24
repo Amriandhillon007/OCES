@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "phase": "10.5",
+    "timestamp": "2026-05-19T09:42:58.518064",
+    "config": {
+      "dimension": 16,
+      "manifold_radius": 1.0,
+      "novelty_radius": 0.1,
+      "lipschitz_constant": 1.2
+    }
+  },
+  "data": {
+    "horizons": [
+      100,
+      200,
+      400,
+      600
+    ],
+    "novelty": [
+      0.085,
+      0.141,
+      0.151,
+      0.134
+    ],
+    "utility": [
+      0.5,
+      0.52,
+      0.53,
+      0.54
+    ],
+    "coverage": [
+      0.6188992686591163,
+      0.6212980654808709,
+      0.6055645451448777,
+      0.6123197228078414
+    ]
+  },
+  "validation": {
+    "correlation": -0.5128308361874002,
+    "coverage_trend": 0.0067551776629637406,
+    "novelty_trend": -0.016999999999999987,
+    "proposition_holds": false
+  },
+  "sensitivity": {
+    "radius_sweep": [
+      {
+        "radius": 0.05,
+        "correlation": -0.5022894084886704,
+        "final_coverage": 0.5850973299519644
+      },
+      {
+        "radius": 0.1,
+        "correlation": -0.5128308361874002,
+        "final_coverage": 0.6123197228078414
+      },
+      {
+        "radius": 0.15,
+        "correlation": -0.5162879685418024,
+        "final_coverage": 0.6213938537598004
+      },
+      {
+        "radius": 0.2,
+        "correlation": -0.5180059581779002,
+        "final_coverage": 0.6259309192357799
+      },
+      {
+        "radius": 0.25,
+        "correlation": -0.5190333742949014,
+        "final_coverage": 0.6286531585213676
+      },
+      {
+        "radius": 0.3,
+        "correlation": -0.5197169126288581,
+        "final_coverage": 0.6304679847117594
+      }
+    ],
+    "dimension_sweep": []
+  }
+}

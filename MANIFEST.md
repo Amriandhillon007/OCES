@@ -12,7 +12,7 @@
 
 ## Included Results
 
-The repository includes selected plots and JSON summaries under `results/`.
+The repository includes a flattened figure gallery, selected JSON summaries, and original phase result directories under `results/by_phase/`.
 
 Excluded by design:
 

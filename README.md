@@ -7,8 +7,9 @@ OCES is a research codebase for the phased development of an exploratory compres
 ```text
 OCES/
   src/phases/          Phase implementations and experiment scripts
-  results/figures/     Published figures and generated plots
+  results/figures/     Flattened gallery of selected figures and plots
   results/json/        Selected structured result summaries
+  results/by_phase/    Original result directories preserved by phase
   docs/                Notes, theory drafts, and phase documentation
   scripts/             Utility and legacy runner scripts
   tests/               Lightweight verification space
@@ -45,7 +46,7 @@ Some runs are intentionally long. The Phase 11.5 canonical configuration uses 50
 
 ## Results
 
-Selected figures are in `results/figures/`. Selected JSON summaries are in `results/json/`. Large transient artifacts such as virtual environments, caches, and checkpoints are intentionally excluded from Git.
+Selected figures are in `results/figures/`. Selected JSON summaries are in `results/json/`. Original phase result folders are preserved under `results/by_phase/`. Large transient artifacts such as virtual environments, caches, and checkpoints are intentionally excluded from Git.
 
 ## Scientific Notes
 

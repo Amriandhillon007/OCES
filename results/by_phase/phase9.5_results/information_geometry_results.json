@@ -1,0 +1,82 @@
+{
+  "data": {
+    "horizons": [
+      5000,
+      10000,
+      25000,
+      50000
+    ],
+    "novelty": [
+      0.085,
+      0.141,
+      0.151,
+      0.134
+    ],
+    "divergence": [
+      0.534,
+      0.495,
+      0.409,
+      0.334
+    ],
+    "utility": [
+      0.5,
+      0.52,
+      0.53,
+      0.54
+    ],
+    "fisher_norm": [
+      1.0,
+      0.8049999999999998,
+      0.3749999999999998,
+      0.0
+    ],
+    "curvature": [
+      -1.7107409831605371,
+      -3.7026457515251217,
+      -3.3815228988774058,
+      -2.042460222642966
+    ],
+    "geodesic_distance": [
+      0.4587155963302753,
+      0.8279816513761468,
+      1.0,
+      1.0
+    ],
+    "volume": [
+      0.4587155963302753,
+      0.8279816513761468,
+      1.0,
+      1.0
+    ]
+  },
+  "correlations": {
+    "curvature_vs_novelty": -0.7804078301957935,
+    "volume_vs_novelty": 0.9286415710602427,
+    "geodesic_vs_novelty": 0.9286415710602427,
+    "fisher_vs_novelty": -0.5932667580332505,
+    "divergence_vs_novelty": -0.5932667580332505,
+    "curvature_vs_divergence": -0.04035437161965453
+  },
+  "metadata": {
+    "epistemic_status": "exploratory correlations over operational proxies",
+    "curvature_status": "normalized second-derivative proxy; not formal Ricci/scalar curvature",
+    "strongest_lead": "geodesic_vs_novelty association",
+    "novelty_ceiling": 0.151,
+    "novelty_sustainable": 0.134,
+    "utility_at_ceiling": 0.54,
+    "volume_saturated": true,
+    "curvature_regime": "Negative (Divergent/Novel) with slightly diverging trend",
+    "curvature_mean": -2.709342464051508,
+    "curvature_final": -2.042460222642966,
+    "curvature_trend": -0.3317192394824289,
+    "analysis_date": "2026-05-19T04:33:49.530524"
+  },
+  "interpretations": {
+    "curvature_vs_novelty": "Strong negative (-0.780): Preliminary evidence consistent with geometric novelty saturation",
+    "volume_vs_novelty": "Strong positive (0.929): Volume grows with novelty (expected)",
+    "geodesic_vs_novelty": "Strong positive (0.929): Strong lead: novelty may track geometric trajectory displacement",
+    "fisher_vs_novelty": "Moderate negative (-0.593): Moderate negative correlation",
+    "divergence_vs_novelty": "Moderate negative (-0.593): Moderate negative correlation",
+    "curvature_vs_divergence": "Negligible negative (-0.040): Negligible negative correlation"
+  }
+}

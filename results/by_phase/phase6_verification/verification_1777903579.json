@@ -1,0 +1,6 @@
+{
+  "timestamp": 1777903579.2693813,
+  "phase6_stable": false,
+  "pass_criteria": {
+    "recovery_success_rate": false,
+    "recovery_repeatable": 

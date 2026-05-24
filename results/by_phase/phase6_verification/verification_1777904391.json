@@ -1,0 +1,15 @@
+{
+  "timestamp": 1777904391.0834827,
+  "phase6_stable": false,
+  "pass_criteria": {
+    "recovery_success_rate": false,
+    "recovery_repeatable": false,
+    "error_trend_decreasing": false,
+    "parameters_adapt": false
+  },
+  "runs": [
+    {
+      "run_id": 0,
+      "seed": 1000,
+      "pattern": "noise_burst",
+      "success": 
