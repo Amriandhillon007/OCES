@@ -1,0 +1,930 @@
+DOCUMENT INFORMATION
+Field	Value
+Project	OCES (Occupancy-Constrained Exploratory Systems)
+Phase	10.5
+Title	Restricted Novelty Compression Proposition (RNCP)
+Framework Type	Exploratory Geometric-Operational Research Framework
+Research Status	Exploratory Validation Completed
+Primary Discovery	Phase-Structured Novelty Compression
+Date	2026-05-19
+ABSTRACT
+Phase 10.5 formalizes the first restricted saturation framework within OCES. The original objective was to investigate whether bounded representational occupancy in recursively self-modeling inferential systems induces novelty saturation over long exploration horizons.
+
+Initial formulations hypothesized eventual novelty collapse under increasing occupancy. However, empirical trajectory analysis using real Phase 11 recursive inferential trajectories revealed a more complex and scientifically richer behavior.
+
+The final outcome of Phase 10.5 demonstrates:
+
+Bounded occupancy accumulation
+
+Negative occupancy–novelty coupling (r = -0.513)
+
+Phase-structured exploration dynamics
+
+Novelty compression rather than novelty extinction
+
+Evidence for effective low-dimensional occupancy behavior (d_eff ≈ 9, participation ratio ≈ 3.91)
+
+The framework therefore evolved from:
+
+"Novelty eventually disappears under bounded exploration"
+
+into:
+
+"Bounded representational occupancy induces phase-structured exploratory compression."
+
+This phase establishes the mathematical and empirical foundations for future occupancy dynamics theory (Phase 10.6) and local theorem scaffolding (Phase 11.5).
+
+1. RESEARCH MOTIVATION
+Earlier OCES phases focused primarily on recursive inferential systems, novelty generation, identity continuity, and exploratory dynamics. However, a major unresolved question emerged:
+
+Can recursive inferential systems continue generating novelty indefinitely within bounded representational spaces?
+
+This led to the development of saturation theory. The central intuition was:
+
+Recursive systems explore representational regions
+
+Explored regions accumulate over time
+
+Unexplored regions shrink
+
+Novelty generation may become increasingly constrained
+
+Phase 10.5 represents the first formal attempt to operationalize this intuition.
+
+2. RESEARCH OBJECTIVE
+The goal of Phase 10.5 was NOT to prove a universal saturation theorem.
+
+Instead, the objective was:
+
+To construct an operational geometric framework for studying occupancy-driven novelty compression under bounded recursive exploration.
+
+This required:
+
+Operational definitions
+
+Geometric novelty formalization
+
+Occupancy estimation
+
+Empirical trajectory analysis
+
+Restricted proposition development
+
+3. OPERATIONAL DEFINITIONS
+3.1 Representational State Space
+The recursive inferential system operates inside a bounded operational metric space:
+
+(
+M
+,
+d
+g
+)
+(M,d 
+g
+​
+ )
+
+where:
+
+M
+M represents the representational state space
+
+d
+g
+d 
+g
+​
+  is an operational metric
+
+Operational implementation:
+
+M
+=
+{
+Φ
+∈
+R
+16
+:
+∥
+Φ
+∥
+≤
+1.0
+}
+M={Φ∈R 
+16
+ :∥Φ∥≤1.0}
+
+Metric (operational approximation):
+
+d
+g
+(
+x
+,
+y
+)
+=
+∥
+x
+−
+y
+∥
+2
+d 
+g
+​
+ (x,y)=∥x−y∥ 
+2
+​
+ 
+
+IMPORTANT: This Euclidean metric is an operational approximation only. It is NOT a claim regarding intrinsic representational geometry.
+
+3.2 Archive Structure
+The explored archive is defined as:
+
+A
+t
+=
+{
+a
+1
+,
+a
+2
+,
+.
+.
+.
+,
+a
+n
+}
+⊂
+M
+A 
+t
+​
+ ={a 
+1
+​
+ ,a 
+2
+​
+ ,...,a 
+n
+​
+ }⊂M
+
+where:
+
+Each archive point represents a previously visited inferential embedding
+
+Archive size is bounded operationally
+
+Implementation: 
+∣
+A
+t
+∣
+≤
+500
+∣A 
+t
+​
+ ∣≤500
+
+3.3 Geometric Novelty Functional
+The central novelty definition of Phase 10.5 is:
+
+N
+t
+(
+x
+)
+=
+min
+⁡
+a
+∈
+A
+t
+d
+g
+(
+x
+,
+a
+)
+N 
+t
+​
+ (x)=min 
+a∈A 
+t
+​
+ 
+​
+ d 
+g
+​
+ (x,a)
+
+Interpretation: Novelty is defined as geometric displacement from previously explored regions.
+
+This replaced earlier heuristic novelty metrics and became the canonical novelty definition within OCES.
+
+3.4 Coverage Definition
+Coverage is operationally defined as:
+
+Cov
+t
+=
+Vol
+(
+⋃
+a
+∈
+A
+t
+B
+r
+(
+a
+)
+)
+Vol
+(
+M
+)
+Cov 
+t
+​
+ = 
+Vol(M)
+Vol(⋃ 
+a∈A 
+t
+​
+ 
+​
+ B 
+r
+​
+ (a))
+​
+ 
+
+where:
+B
+r
+(
+a
+)
+=
+{
+x
+∈
+M
+:
+d
+g
+(
+x
+,
+a
+)
+<
+r
+}
+B 
+r
+​
+ (a)={x∈M:d 
+g
+​
+ (x,a)<r}
+
+with 
+r
+=
+0.1
+r=0.1
+
+Interpretation: Coverage measures estimated occupancy of representational neighborhoods.
+
+3.5 Bounded Exploration
+Recursive exploration is assumed to satisfy Lipschitz boundedness:
+
+d
+(
+T
+(
+x
+)
+,
+T
+(
+y
+)
+)
+≤
+L
+⋅
+d
+(
+x
+,
+y
+)
+d(T(x),T(y))≤L⋅d(x,y)
+
+with 
+L
+=
+1.2
+L=1.2
+
+This prevents unrestricted representational teleportation.
+
+4. THEORETICAL TRANSITION
+Original Hypothesis
+The early saturation hypothesis assumed:
+
+E
+[
+N
+t
+]
+→
+0
+E[N 
+t
+​
+ ]→0
+
+meaning: novelty eventually disappears.
+
+Empirical Contradiction
+Real trajectory analysis contradicted this strong claim.
+
+Observed novelty:
+
+Horizon	Novelty
+100	0.085
+200	0.141
+400	0.151
+600	0.134
+Novelty:
+
+Initially increased
+
+Reached a peak
+
+Then partially compressed
+
+This directly contradicted monotonic novelty decay.
+
+Revised Interpretation
+Phase 10.5 therefore evolved toward:
+
+Novelty compression rather than novelty extinction.
+
+The mature interpretation became:
+
+γ
+(
+t
+)
+=
+−
+d
+d
+t
+E
+[
+N
+t
+]
+γ(t)=− 
+dt
+d
+​
+ E[N 
+t
+​
+ ]
+
+where novelty growth becomes progressively constrained, but novelty itself may persist.
+
+This became the central conceptual transition of Phase 10.5.
+
+5. RESTRICTED NOVELTY COMPRESSION PROPOSITION (RNCP)
+Statement
+Under bounded representational occupancy and ergodic exploration dynamics, the expected novelty compression rate:
+
+γ
+(
+t
+)
+=
+−
+d
+d
+t
+E
+[
+N
+t
+]
+γ(t)=− 
+dt
+d
+​
+ E[N 
+t
+​
+ ]
+
+exhibits systematic decay consistent with asymptotic stabilization.
+
+Equivalently:
+
+lim inf
+⁡
+t
+→
+∞
+γ
+(
+t
+)
+≥
+0
+liminf 
+t→∞
+​
+ γ(t)≥0
+
+Interpretation: Novelty growth becomes progressively compressed under occupancy accumulation.
+
+This is:
+
+NOT a zero-novelty claim
+
+NOT a proof of novelty extinction
+
+BUT a bounded exploratory compression proposition
+
+6. ASSUMPTIONS
+The RNCP operates under the following assumptions.
+
+Assumption 1 — Bounded Representational Space
+diam
+(
+M
+)
+<
+∞
+diam(M)<∞
+
+The representational geometry is bounded.
+
+Assumption 2 — Lipschitz Exploration
+d
+(
+T
+(
+x
+)
+,
+T
+(
+y
+)
+)
+≤
+1.2
+⋅
+d
+(
+x
+,
+y
+)
+d(T(x),T(y))≤1.2⋅d(x,y)
+
+Exploration remains bounded and continuous.
+
+Assumption 3 — Ergodic or Mixing Dynamics
+The recursive system explores accessible representational neighborhoods sufficiently over time. This assumption becomes important for occupancy arguments.
+
+Assumption 4 — Expected Coverage Accumulation
+E
+[
+Cov
+t
++
+1
+]
+≥
+E
+[
+Cov
+t
+]
+−
+0.01
+E[Cov 
+t+1
+​
+ ]≥E[Cov 
+t
+​
+ ]−0.01
+
+Coverage increases in expectation.
+
+7. PROOF SKETCH
+The RNCP currently includes only a restricted proof sketch. It is NOT a formal theorem proof.
+
+Step 1 — Novelty Requires Uncovered Regions
+N
+t
+(
+x
+)
+>
+0
+⇒
+x
+∉
+⋃
+a
+∈
+A
+t
+B
+r
+(
+a
+)
+N 
+t
+​
+ (x)>0⇒x∈
+/
+⋃ 
+a∈A 
+t
+​
+ 
+​
+ B 
+r
+​
+ (a)
+
+Novelty requires representational regions not yet densely occupied.
+
+Step 2 — Sampling Probability Under Mixing
+Under ergodic or sufficiently mixing dynamics, sampling probability becomes proportional to accessible representational volume.
+
+Step 3 — Occupancy Stabilization
+As 
+d
+d
+t
+Cov
+t
+→
+0
+dt
+d
+​
+ Cov 
+t
+​
+ →0, marginal occupancy growth declines.
+
+Step 4 — Compression Interpretation
+As occupancy accumulation stabilizes, large novelty excursions become progressively less likely. This motivates novelty compression dynamics.
+
+8. EMPIRICAL VALIDATION
+8.1 Data Source
+Phase 10.5 used real recursive trajectories generated from Phase 11.
+
+Parameter	Value
+Ontologies	2
+State Dimension	16
+Horizons	100, 200, 400, 600
+Trajectories	2
+Seeds	1
+State Samples	~200 per horizon
+8.2 Trajectory Collection Correction
+A major implementation issue was discovered during early validation. Initial snapshots contained only 1 state per trajectory, producing unstable occupancy estimates.
+
+This caused:
+
+Numerical instability
+
+Invalid coverage estimation
+
+Unreliable correlations
+
+Correction: Trajectory windows of ~100 states per horizon were introduced.
+
+This dramatically improved:
+
+Occupancy stability
+
+Coverage estimation
+
+Geometric consistency
+
+9. EMPIRICAL RESULTS
+9.1 Coverage Estimates
+Ensemble coverage estimates:
+
+Horizon	Coverage
+100	0.6189
+200	0.6213
+400	0.6056
+600	0.6123
+Observed behavior:
+
+Coverage stabilizes
+
+Occupancy growth compresses
+
+Full occupancy is NOT required
+
+9.2 Coverage–Novelty Correlation
+Observed correlation:
+
+r
+=
+−
+0.5128
+r=−0.5128
+
+Interpretation: Higher occupancy is associated with lower novelty. This was one of the strongest empirical findings of Phase 10.5.
+
+9.3 Bootstrap Analysis
+Bootstrap resampling (n=1000):
+
+Metric	Value
+Valid Resamples	982
+Mean Correlation	-0.4747
+Std Correlation	0.6117
+Probability(corr < 0)	85.2%
+Interpretation: Directional negative correlation evidence is strong under exploratory conditions. However, sample size remains too small for confirmatory statistical inference.
+
+10. TRAJECTORY DIAGNOSTICS
+10.1 Effective Dimensionality
+Metric	Value
+Effective Dimension (90% variance)	9.0
+Participation Ratio	3.91
+Interpretation: Recursive exploration occupies significantly lower-dimensional subregions than the nominal 16-dimensional space. This became one of the most important discoveries for Phase 10.6.
+
+10.2 Revisit Dynamics
+Metric	Value
+Mean Revisit Rate	1.0000
+Interpretation: Recursive trajectories repeatedly revisit previously occupied regions. This strongly supports occupancy accumulation dynamics.
+
+10.3 Density Structure
+Metric	Value
+Dense Region Fraction	0.9958
+Sparse Region Fraction	0.0000
+Interpretation: Exploration strongly concentrates into dense occupancy regions. This suggests attractor-like representational confinement.
+
+11. PHASE-STRUCTURED EXPLORATION DISCOVERY
+The most important discovery of Phase 10.5 was: novelty exhibits phase structure.
+
+Phase	Horizon Range	Novelty Range	Behavior
+Expansion	0 → 400	0.085 → 0.151	Novelty rises rapidly
+Peak	~400	0.151	Exploration diversity maximizes
+Compression	400 → 600+	0.151 → 0.134	Occupancy buildup constrains novelty
+This replaced the earlier monotonic saturation interpretation.
+
+11.1 Expansion Phase
+Observed: 
+0.085
+→
+0.151
+0.085→0.151 (trend gradient: +0.010)
+
+Interpretation: Early exploration rapidly expands into new representational neighborhoods.
+
+11.2 Peak Phase
+Observed: Maximum novelty 
+N
+=
+0.151
+N=0.151 at horizon 400
+
+Interpretation: Maximum behavioral diversity before occupancy constraints emerge.
+
+11.3 Compression Phase
+Observed: 
+0.151
+→
+0.134
+0.151→0.134 (trend gradient: -0.017, compression rate: -0.0085)
+
+Interpretation: Occupancy accumulation begins to constrain novelty generation.
+
+12. SENSITIVITY ANALYSIS
+Radius sweep results (varying 
+r
+r from 0.05 to 0.30):
+
+Radius	Correlation	Final Coverage
+0.05	-0.5023	0.5851
+0.10	-0.5128	0.6123
+0.15	-0.5163	0.6214
+0.20	-0.5180	0.6259
+0.25	-0.5190	0.6287
+0.30	-0.5197	0.6305
+Interpretation: Results are robust across the tested radius range. Correlation remains consistently negative (
+≈
+−
+0.50
+≈−0.50 to 
+−
+0.52
+−0.52).
+
+13. LIMITATIONS
+13.1 Statistical Limitations
+Issue	Current Status	Required for Confirmation
+Horizons	4	≥ 10
+Trajectories	2	≥ 5
+Seeds	1	≥ 5
+Total data points	~200 per horizon	≥ 1000 per horizon
+Interpretation: These results should be interpreted as exploratory evidence, not confirmatory validation.
+
+13.2 Coverage Estimation
+Coverage estimators (k-NN, KDE, dispersion, union) are approximate and do not directly measure representational occupancy. They provide directional evidence, not ground truth coverage.
+
+13.3 Metric Approximation
+The Euclidean metric 
+d
+g
+(
+x
+,
+y
+)
+=
+∥
+x
+−
+y
+∥
+2
+d 
+g
+​
+ (x,y)=∥x−y∥ 
+2
+​
+  is an operational approximation, not a claim about intrinsic representational geometry. Future work may refine this using information geometry (Phase 9.5) or data-driven geodesic estimation.
+
+13.4 Ergodicity Assumption
+The proof sketch assumes ergodic or mixing dynamics. For non-ergodic systems (attractor confinement), the proposition applies only within accessible subsets.
+
+13.5 Finite Dimensionality
+The proposition assumes 
+d
+<
+∞
+d<∞. Extension to effectively infinite-dimensional systems (e.g., Phase 12 PIRL) requires separate analysis.
+
+14. THEORETICAL IMPLICATIONS
+14.1 What Phase 10.5 Established
+Claim	Evidence	Strength
+Coverage and novelty are negatively correlated	r = -0.513, power = 85.2%	Moderate
+Occupancy stabilizes before full coverage	Cov ≈ 0.61-0.62 across all horizons	Strong
+Novelty exhibits phase structure	Expansion → Peak → Compression	Strong
+Effective dimensionality is lower than nominal	d_eff = 9 (nominal 16)	Moderate
+Systems revisit previously occupied regions	Revisit rate = 1.0	Strong
+14.2 What Phase 10.5 Did NOT Establish
+Universal saturation law
+
+Statistical significance at p < 0.05
+
+Asymptotic convergence proof
+
+Causal relationship between occupancy and novelty
+
+Ground truth coverage measurement
+
+14.3 The New Research Identity of OCES
+After Phase 10.5, OCES is now best interpreted as:
+
+An exploratory geometric-operational framework studying occupancy-driven exploratory compression in recursively self-modeling inferential systems under bounded representational dynamics.
+
+This is significantly stronger than:
+
+"Conscious AI"
+
+"Synthetic awareness"
+
+"Recursive sentience"
+
+15. TRANSITION TO PHASE 10.6
+Phase 10.5 revealed that the true bottleneck is occupancy estimation validity, not novelty measurement.
+
+Phase 10.6 Will Address
+Question	Direction
+What is effective occupancy?	Distinguish global, local, effective, and sparse occupancy
+What is effective saturation?	Define saturation as 
+Δ
+Cov
+eff
+→
+0
+ΔCov 
+eff
+​
+ →0
+Multi-scale occupancy	Local, mesoscopic, and global occupancy structure
+Revisit dynamics	Revisit frequencies, neighborhood recurrence, attractor return probability
+Immediate Research Targets After Phase 10.5
+Priority	Phase	Goal
+1	Phase 10.6	Occupancy Dynamics & Effective Saturation
+2	Phase 11.5	Local Compression Theorems
+3	Phase 9.5 Expansion	Statistical Geometry Validation
+4	Phase 3.5	Epistemic Individuality
+16. CONCLUSION
+Phase 10.5 successfully transitioned OCES from:
+
+A novelty-centric framework
+
+Into an occupancy-driven exploratory compression framework
+
+Key findings:
+
+Coverage-novelty correlation: 
+r
+=
+−
+0.513
+r=−0.513 (85.2% power)
+
+Phase-structured novelty: Expansion → Peak → Compression
+
+Effective dimensionality: 
+d
+eff
+≈
+9
+d 
+eff
+​
+ ≈9 (nominal 16)
+
+Occupancy stabilizes at 
+Cov
+≈
+0.61
+−
+0.62
+Cov≈0.61−0.62
+
+Utility maintained at 
+U
+≈
+0.50
+−
+0.54
+U≈0.50−0.54 throughout
+
+The Restricted Novelty Compression Proposition (RNCP) partially holds under current exploratory conditions:
+
+✅ Strong negative correlation detected
+
+✅ Coverage saturation observed
+
+❌ Novelty not at ceiling (but compression phase detected)
+
+The phase-structured novelty discovery is the most important scientific outcome of Phase 10.5. It suggests that novelty saturation is not monotonic but involves distinct dynamical regimes: rapid expansion, peak diversity, and occupancy-driven compression.
+
+17. REFERENCES
+Phase 11 empirical trajectory data (OCES, 2026)
+
+Phase 9.5 geometric analysis (OCES, 2026)
+
+Restricted Novelty Compression Proposition formulation (OCES, 2026)
+
+18. DOCUMENT SIGNATURE
+yaml
+document_id: PHASE10.5_DOC_V1.0
+date: 2026-05-19
+author: OCES Project
+status: EXPLORATORY_VALIDATION_COMPLETE
+next_phase: PHASE_10.6_OCCUPANCY_DYNAMICS

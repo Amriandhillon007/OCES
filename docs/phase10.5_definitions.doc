@@ -1,0 +1,820 @@
+"""
+PHASE 10.5: OPERATIONAL DEFINITIONS
+
+Based on Phase 9.5 geometric analysis
+Geodesic-Novelty Correlation: 0.9286 (validates approach)
+"""
+
+# Definition 1: State Space
+# M = { Φ ∈ R^d : ||Φ|| ≤ R }
+# where R = manifold_radius (empirically, R ≈ 1.0 from state normalization)
+
+# Definition 2: Metric
+# d_g(x, y) = ||x - y||_2  (Euclidean, operational)
+
+# Definition 3: Archive
+# A_t = {a_1, a_2, ..., a_n} ⊂ M
+# |A_t| ≤ archive_limit (default: 500)
+
+# Definition 4: Novelty Functional
+# N_t(x) = min_{a ∈ A_t} d_g(x, a)
+
+# Definition 5: Coverage
+# Cov_t = Vol(∪ B_r(a)) / Vol(M)
+# where B_r(a) = { x ∈ M : d_g(x, a) < r }
+
+# Definition 6: Bounded Exploration
+# d(T(x), T(y)) ≤ L · d(x, y)
+# where L < ∞ is Lipschitz constant
+
+PROPOSITION (To Add to phase10.5_definitions.doc)
+Restricted Saturation Proposition (RSP)
+Setup:
+
+Let 
+(
+M
+,
+d
+g
+)
+(M,d 
+g
+​
+ ) be a bounded operational metric state space with:
+
+M
+=
+{
+Φ
+∈
+R
+d
+:
+∥
+Φ
+∥
+≤
+R
+}
+M={Φ∈R 
+d
+ :∥Φ∥≤R}, 
+R
+<
+∞
+R<∞
+
+d
+g
+(
+x
+,
+y
+)
+=
+∥
+x
+−
+y
+∥
+2
+d 
+g
+​
+ (x,y)=∥x−y∥ 
+2
+​
+  (Euclidean metric)
+
+Vol
+(
+M
+)
+<
+∞
+Vol(M)<∞ (finite volume)
+
+Let 
+A
+t
+⊂
+M
+A 
+t
+​
+ ⊂M be a finite archive with:
+
+∣
+A
+t
+∣
+≤
+N
+max
+⁡
+∣A 
+t
+​
+ ∣≤N 
+max
+​
+  (bounded size)
+
+Archive accumulates states (subject to bounded pruning)
+
+Define:
+
+Novelty functional: 
+N
+t
+(
+x
+)
+=
+min
+⁡
+a
+∈
+A
+t
+d
+g
+(
+x
+,
+a
+)
+N 
+t
+​
+ (x)=min 
+a∈A 
+t
+​
+ 
+​
+ d 
+g
+​
+ (x,a)
+
+Coverage: 
+Cov
+t
+=
+Vol
+(
+⋃
+a
+∈
+A
+t
+B
+r
+(
+a
+)
+)
+Vol
+(
+M
+)
+Cov 
+t
+​
+ = 
+Vol(M)
+Vol(⋃ 
+a∈A 
+t
+​
+ 
+​
+ B 
+r
+​
+ (a))
+​
+ , where 
+B
+r
+(
+a
+)
+=
+{
+x
+∈
+M
+:
+d
+g
+(
+x
+,
+a
+)
+<
+r
+}
+B 
+r
+​
+ (a)={x∈M:d 
+g
+​
+ (x,a)<r}
+
+Let 
+T
+:
+M
+→
+M
+T:M→M be the state transition operator satisfying bounded exploration:
+d
+g
+(
+T
+(
+x
+)
+,
+T
+(
+y
+)
+)
+≤
+L
+⋅
+d
+g
+(
+x
+,
+y
+)
+∀
+x
+,
+y
+∈
+M
+,
+L
+<
+∞
+d 
+g
+​
+ (T(x),T(y))≤L⋅d 
+g
+​
+ (x,y)∀x,y∈M,L<∞
+
+Proposition (Restricted Saturation):
+
+Under the above definitions and assumptions, as archive coverage approaches manifold volume, the expected novelty asymptotically decreases toward zero:
+
+Cov
+t
+→
+1
+⇒
+lim
+⁡
+t
+→
+∞
+E
+[
+N
+t
+]
+=
+0
+Cov 
+t
+​
+ →1⇒lim 
+t→∞
+​
+ E[N 
+t
+​
+ ]=0
+
+Equivalently, for any 
+ϵ
+>
+0
+ϵ>0:
+lim
+⁡
+t
+→
+∞
+P
+(
+N
+t
+>
+ϵ
+)
+=
+0
+lim 
+t→∞
+​
+ P(N 
+t
+​
+ >ϵ)=0
+
+Assumptions (Explicitly Stated):
+
+Boundedness: 
+M
+M has finite diameter: 
+diam
+(
+M
+)
+=
+max
+⁡
+x
+,
+y
+∈
+M
+d
+g
+(
+x
+,
+y
+)
+<
+∞
+diam(M)=max 
+x,y∈M
+​
+ d 
+g
+​
+ (x,y)<∞
+
+Archive Accumulation: Archive coverage is monotonic in expectation: 
+E
+[
+Cov
+t
++
+1
+]
+≥
+E
+[
+Cov
+t
+]
+E[Cov 
+t+1
+​
+ ]≥E[Cov 
+t
+​
+ ] (or bounded pruning)
+
+Bounded Exploration: Transition operator 
+T
+T is Lipschitz continuous with constant 
+L
+<
+∞
+L<∞
+
+Novelty Radius: 
+r
+>
+0
+r>0 is fixed for coverage balls
+
+Proof Sketch:
+
+Novelty requires uncovered region: 
+N
+t
+(
+x
+)
+>
+0
+  
+⟹
+  
+x
+∉
+⋃
+a
+∈
+A
+t
+B
+r
+(
+a
+)
+N 
+t
+​
+ (x)>0⟹x∈
+/
+⋃ 
+a∈A 
+t
+​
+ 
+​
+ B 
+r
+​
+ (a)
+
+Uncovered volume decreases: As 
+Cov
+t
+→
+1
+Cov 
+t
+​
+ →1, the uncovered set 
+U
+t
+=
+M
+∖
+⋃
+a
+∈
+A
+t
+B
+r
+(
+a
+)
+U 
+t
+​
+ =M∖⋃ 
+a∈A 
+t
+​
+ 
+​
+ B 
+r
+​
+ (a) satisfies 
+Vol
+(
+U
+t
+)
+→
+0
+Vol(U 
+t
+​
+ )→0
+
+Bounded exploration limits access: Under Lipschitz dynamics, the probability of sampling from 
+U
+t
+U 
+t
+​
+  is proportional to 
+Vol
+(
+U
+t
+)
+Vol(U 
+t
+​
+ ) (by ergodicity / uniform ergodicity)
+
+Therefore: 
+P
+(
+N
+t
+>
+ϵ
+)
+→
+0
+P(N 
+t
+​
+ >ϵ)→0, implying 
+E
+[
+N
+t
+]
+→
+0
+E[N 
+t
+​
+ ]→0
+
+What This Proposition Does NOT Claim:
+
+❌ Universal law for all systems
+
+❌ Zero novelty forever (only asymptotic)
+
+❌ Deterministic collapse (probabilistic statement)
+
+❌ Proof of impossibility
+
+❌ Optimality or information-theoretic bounds
+
+Empirical Support (From Phase 9.5 & Phase 11):
+
+Quantity	Value	Interpretation
+Novelty at 50k steps	0.134	Asymptotic behavior observed
+Volume-Novelty Correlation	0.9286	Coverage drives novelty
+Geodesic-Novelty Correlation	0.9286	Validates displacement definition
+Volume Saturation	True	Cov_t → 1 confirmed
+Utility at Ceiling	0.540	Functional competence maintained
+REVISED PHASE 10.5 FRAMEWORK (Incorporating Your Refinements)
+Refinement 1: Coverage Saturation, Not Full Occupancy
+Old (Too Strong):
+Cov
+t
+→
+1
+Cov 
+t
+​
+ →1
+
+New (Correct):
+d
+d
+t
+Cov
+t
+→
+0
+(marginal exploration gain decays)
+dt
+d
+​
+ Cov 
+t
+​
+ →0(marginal exploration gain decays)
+
+or
+
+Cov
+t
+→
+Cov
+max
+⁡
+<
+1
+(saturation regime)
+Cov 
+t
+​
+ →Cov 
+max
+​
+ <1(saturation regime)
+
+Why this matters: High-dimensional systems rarely achieve full occupancy. You only need declining marginal gain.
+
+Refinement 2: Euclidean Metric as Operational Approximation
+Add this explicit caveat:
+
+*"The Euclidean metric 
+d
+g
+(
+x
+,
+y
+)
+=
+∥
+x
+−
+y
+∥
+2
+d 
+g
+​
+ (x,y)=∥x−y∥ 
+2
+​
+  is used as an operational approximation for computational tractability. This does not imply that representational geometry is intrinsically Euclidean, nor that such structure is claimed to be fundamental. Future work may refine the metric using information geometry (Phase 9.5) or data-driven geodesic estimation."*
+
+Refinement 3: Explicit Ergodic/Mixing Assumption in Proof Sketch
+Old (Hidden assumption):
+
+"probability of sampling uncovered regions becomes proportional to uncovered volume"
+
+New (Explicit):
+
+"Under ergodic or sufficiently mixing bounded exploration dynamics, the asymptotic probability of sampling from uncovered regions is proportional to their relative volume. For non-ergodic systems (e.g., those with attractor confinement), the proposition applies within accessible subsets of the state space."
+
+Refinement 4: Archive Accumulation in Expectation
+Old (Too Strong):
+
+"archive accumulates monotonically"
+
+New (Correct):
+
+"effective representational coverage increases in expectation"
+
+Formally:
+E
+[
+Cov
+t
++
+1
+]
+≥
+E
+[
+Cov
+t
+]
+−
+δ
+t
+E[Cov 
+t+1
+​
+ ]≥E[Cov 
+t
+​
+ ]−δ 
+t
+​
+ 
+where 
+δ
+t
+δ 
+t
+​
+  accounts for bounded pruning.
+
+Refinement 5: Empirical Coverage Must Be Independent
+Critical: You cannot derive coverage from novelty and then claim correlation.
+
+For publication-grade work, you need:
+
+Method	Description	Status
+Trajectory dispersion	Variance of visitation	To implement
+k-NN density	Local occupancy estimation	To implement
+Neighborhood coverage	Union of balls from actual states	Implemented (Phase 9.5)
+Kernel density estimation	Smooth occupancy field	To implement
+For now, the approximation is only for exploratory scaffolding.
+\section*{Limitations of Phase 10.5}
+
+The Restricted Saturation Proposition (RSP) makes several idealizing assumptions that limit its direct applicability:
+
+\begin{enumerate}
+\item \textbf{Full occupancy not required:} The proposition only requires $\frac{d}{dt}\text{Cov}_t \to 0$, not $\text{Cov}_t \to 1$. However, empirical verification of this condition requires accurate coverage estimation, which remains challenging in high-dimensional spaces.
+
+\item \textbf{Euclidean metric approximation:} The current operational metric $d_g(x,y) = \|x-y\|_2$ is a computational convenience, not a claim about intrinsic representational geometry. Future work may refine this using information geometry (Phase 9.5).
+
+\item \textbf{Ergodicity assumption:} The proof sketch assumes ergodic or sufficiently mixing dynamics. For non-ergodic systems (attractor confinement, fractal trajectories), the proposition applies only within accessible subsets.
+
+\item \textbf{Coverage estimation challenge:} The empirical demonstration currently approximates coverage from novelty values, creating circularity. Rigorous validation requires independent coverage estimation (trajectory dispersion, k-NN density, kernel methods).
+
+\item \textbf{Finite-dimensional assumption:} The proposition assumes bounded dimensionality $d < \infty$. Extension to effectively infinite-dimensional systems (e.g., PIRL in Phase 12) requires separate analysis.
+
+\item \textbf{Stationarity of $r$:} The novelty radius $r$ is treated as fixed. Adaptive or scale-dependent radii may alter saturation dynamics.
+\end{enumerate}
+
+These limitations do not invalidate the proposition but rather delineate its domain of applicability.
+\begin{proof}[Proof Sketch]
+
+Under the following assumptions:
+\begin{itemize}
+\item $M$ is bounded: $\text{diam}(M) < \infty$
+\item The transition operator $T$ is Lipschitz: $d(T(x), T(y)) \leq L \cdot d(x,y)$
+\item The dynamics are \textbf{ergodic or sufficiently mixing} on $M$ (or on accessible subsets)
+\item Archive coverage increases in expectation: $\mathbb{E}[\text{Cov}_{t+1}] \geq \mathbb{E}[\text{Cov}_t] - \delta_t$
+\end{itemize}
+
+The argument proceeds:
+
+\begin{enumerate}
+\item Novelty requires uncovered region: $N_t(x) > 0 \implies x \notin \bigcup_{a \in A_t} B_r(a)$
+\item Under ergodic/mixing dynamics, the asymptotic probability of sampling from a measurable set $U \subset M$ is proportional to $\text{Vol}(U)$
+\item As $\frac{d}{dt}\text{Cov}_t \to 0$, the uncovered volume satisfies $\text{Vol}(U_t) \to \text{Vol}_{\min} \geq 0$
+\item Therefore $\mathbb{P}(N_t > \epsilon) \to \mathbb{P}_{\min}$, and if $\text{Vol}_{\min} = 0$, then $\mathbb{P}(N_t > \epsilon) \to 0$
+\item Hence $\lim_{t \to \infty} \mathbb{E}[N_t] = \lim_{t \to \infty} \int_0^{\infty} \mathbb{P}(N_t > \epsilon) d\epsilon \to 0$
+\end{enumerate}
+
+This establishes asymptotic novelty decay under the stated assumptions.
+\end{proof}
+"""
+PHASE 10.5: INDEPENDENT COVERAGE ESTIMATION
+Not derived from novelty (breaks circularity)
+
+Methods:
+1. Trajectory dispersion (variance of visitation)
+2. k-NN density estimation
+3. Kernel density estimation
+4. Neighborhood union (from Phase 9.5)
+"""
+
+import numpy as np
+from scipy.spatial import KDTree
+from sklearn.neighbors import KernelDensity
+
+def estimate_coverage_knn(states, r=0.1, k=5):
+    """
+    Estimate coverage using k-nearest neighbors.
+    
+    Coverage ∝ 1 - (average k-NN distance / expected distance under uniform)
+    """
+    if len(states) < k + 1:
+        return 0.0
+    
+    tree = KDTree(states)
+    distances, _ = tree.query(states, k=k+1)  # k+1 includes self
+    avg_distance = np.mean(distances[:, 1:])  # exclude self
+    
+    # Expected distance for uniform distribution on sphere of radius R
+    # Approximate: d_expected ≈ R * (k/n)^(1/d)
+    R = 1.0  # manifold radius
+    d = states.shape[1] if len(states.shape) > 1 else 1
+    n = len(states)
+    expected_distance = R * (k / n) ** (1/d)
+    
+    coverage = max(0.0, min(1.0, 1.0 - avg_distance / (2 * expected_distance)))
+    return coverage
+
+def estimate_coverage_kde(states, r=0.1, bandwidth=0.1):
+    """
+    Estimate coverage using kernel density estimation.
+    
+    Coverage = ∫ I[density(x) > threshold] dx / Vol(M)
+    """
+    if len(states) < 10:
+        return 0.0
+    
+    kde = KernelDensity(bandwidth=bandwidth)
+    kde.fit(states)
+    
+    # Sample points to estimate covered volume
+    n_samples = min(1000, len(states) * 10)
+    samples = np.random.randn(n_samples, states.shape[1]) * 1.0
+    samples = samples / (np.linalg.norm(samples, axis=1, keepdims=True) + 1e-8)
+    
+    densities = np.exp(kde.score_samples(samples))
+    threshold = np.percentile(densities, 10)  # 10th percentile as threshold
+    
+    covered = densities > threshold
+    coverage = np.mean(covered)
+    
+    return coverage
+
+def estimate_coverage_dispersion(trajectory, bin_size=0.1):
+    """
+    Estimate coverage from trajectory dispersion (variance).
+    
+    Higher dispersion = more coverage.
+    """
+    if len(trajectory) < 10:
+        return 0.0
+    
+    # Compute variance across trajectory
+    variance = np.var(trajectory, axis=0)
+    
+    # Coverage ∝ 1 / (1 + 1/mean(variance))
+    mean_variance = np.mean(variance)
+    coverage = mean_variance / (1 + mean_variance)
+    
+    return coverage
+    
